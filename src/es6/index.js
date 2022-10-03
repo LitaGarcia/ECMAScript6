@@ -109,3 +109,73 @@ const copyArray3 = structuredClone(originalArray);
 
 originalArray3 === copyArray3; // false
 originalArray3[1] === copyArray3[1]; // false
+
+//objects
+
+//old way
+
+// obj = {name:name, age: age}
+
+//new way
+// let name = 'manuela';
+// let age = 32;
+// obj = {name, age}
+
+//async and promises
+
+const helloPromise = () => {
+  return new Promise((resolve, reject) => {
+    if (true) {
+      resolve('hello');
+    } else {
+      reject('ups');
+    }
+  });
+};
+
+helloPromise()
+  .then((response) => console.log(response))
+  .then(console.log('hello again'))
+  .catch((error) => console.log(error));
+
+//js ood
+
+class calculator {
+  constructor() {
+    //these var will be in a global scope
+    this.valueA = 0;
+    this.valueB = 0;
+  }
+  //metodo al cual le paso los valores que quiero
+  sum(valueA, valueB) {
+    this.valueA = valueA;
+    this.valueB = valueB;
+    return this.valueA + this.valueB;
+  }
+  //here i add all the methods that i need
+}
+
+const calc = new calculator();
+console.log(calc.sum(2, 2));
+
+//we can export and import modules
+// import {hello} from './...'
+// hello()
+
+//GENERATORS
+
+function* helloWorld() {
+  //depends of the algorithm to return us the values
+  if (true) {
+    yield 'Hello, ';
+  }
+  if (true) {
+    //when the first element is executed, this will be executed too, but we nee to use .next() and get the .value
+    yield 'World';
+  }
+}
+
+const generatorHello = helloWorld();
+console.log(generatorHello.next().value); // Hello
+console.log(generatorHello.next().value); // World
+console.log(generatorHello.next().value); // undefined
